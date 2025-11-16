@@ -16,15 +16,15 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: "https://querynest-pi.vercel.app/",
+    origin: "https://querynest-pi.vercel.app",
     credentials: true,
 }));
 app.use(express.json());
 app.use(cookieParser());
 
 // Routes
-app.use("api/users", userRoutes);
-app.use("api/staff", staffRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/staff", staffRoutes);
 
 app.get("/", (req, res) => {
     res.send("API is running");
@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 // HTTP server & Socket.IO
 const server = http.createServer(app);
 export const io = new Server(server, {
-    cors: { origin: "https://querynest-pi.vercel.app/", methods: ["GET", "POST"] },
+    cors: { origin: "https://querynest-pi.vercel.app", methods: ["GET", "POST"] },
 });
 
 io.on("connection", (socket) => {
