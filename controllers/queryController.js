@@ -26,7 +26,7 @@ export const createQuery = async (req, res) => {
 
         if (!categories || !message)
             return res.status(400).json({ error: "All fields required" });
-
+        const userId = req.user;
         // Tokenize and stem the message
         const tokens = tokenizer.tokenize(message.toLowerCase());
         const stemmedTokens = tokens.map(token => stemmer.stem(token));
