@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 // HTTP server & Socket.IO
 const server = http.createServer(app);
 export const io = new Server(server, {
-    cors: { origin: "http://localhost:5174", methods: ["GET", "POST"] },
+    cors: { origin: process.env.URI, methods: ["GET", "POST"] },
 });
 
 io.on("connection", (socket) => {
