@@ -65,6 +65,7 @@ export const createQuery = async (req, res) => {
 
         // Save query
         const newQuery = await Query.create({
+            userId,
             categories,
             message,
             tags: uniqueTags,
